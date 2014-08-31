@@ -1,15 +1,8 @@
 AcneImagerium::Application.routes.draw do
-  get "images/index"
+  
+  resources :images
 
-  get "images/new"
-
-  get "images/create"
-
-  get "images/show"
-
-  get "images/edit"
-
-  get "images/destroy"
+  root to: "images#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

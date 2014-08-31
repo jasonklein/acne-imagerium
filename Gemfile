@@ -13,6 +13,8 @@ gem 'rmagick'
 gem 'figaro'
 
 gem 'normalize-rails'
+gem 'bourbon'
+gem 'neat'
 
 gem 'haml-rails'
 
