@@ -8,6 +8,12 @@ class ImagesController < ApplicationController
   end
 
   def create
+    @image = Image.new(params[:image])
+    if @image.save
+      redirect_to images_path, notice: "That went swimmingly."
+    else
+      render 'index'
+    end
   end
 
   def show
