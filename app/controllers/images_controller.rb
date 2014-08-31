@@ -4,9 +4,6 @@ class ImagesController < ApplicationController
     @image = Image.new
   end
 
-  def new
-  end
-
   def create
     @image = Image.new(params[:image])
     if @image.save
@@ -20,9 +17,6 @@ class ImagesController < ApplicationController
 
   def show
     @image = Image.find(params[:id])
-  end
-
-  def edit
   end
 
   def destroy
