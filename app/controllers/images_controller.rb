@@ -10,7 +10,7 @@ class ImagesController < ApplicationController
   def create
     @image = Image.new(params[:image])
     if @image.save
-      redirect_to images_path, notice: "That went swimmingly."
+      redirect_to images_path, notice: success_notice
     else
       render 'index'
     end
@@ -23,5 +23,9 @@ class ImagesController < ApplicationController
   end
 
   def destroy
+  end
+
+  def success_notice
+    ["That went swimmingly.", "Thanks for adding to the Imagerium!", "A great addition to the collection."].sample
   end
 end
