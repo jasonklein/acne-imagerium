@@ -12,6 +12,7 @@ class ImagesController < ApplicationController
     if @image.save
       redirect_to images_path, notice: success_notice
     else
+      @images = Image.all
       render 'index'
     end
   end
