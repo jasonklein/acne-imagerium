@@ -1,4 +1,7 @@
-= render "form"
+%h2 Add an Image from your Computer
+= render partial: "form", locals: {image: @image, upload_type: "local"}
+%h2 Add an Image from the Internets
+= render partial: "form", locals: {image: @image, upload_type: "remote"}
 %br
 %hr
 = render @images
