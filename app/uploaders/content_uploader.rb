@@ -28,7 +28,7 @@ class ContentUploader < CarrierWave::Uploader::Base
   process :set_content_type
 
   version :thumb do
-    process resize_to_fill: [70, 70]
+    process resize_to_fill: [100, 100]
   end
 
   # Process files as they are uploaded:
