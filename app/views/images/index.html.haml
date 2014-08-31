@@ -1,8 +1,8 @@
 = form_errors_if_any(@image)
 %h2 Add an Image from your Computer
-= render partial: "form", locals: {image: @image, upload_type: "local"}
+= render partial: "form", locals: {image: @image, upload_type: "local", error_upload_type: @error_upload_type}
 %h2 Add an Image from the Internets
-= render partial: "form", locals: {image: @image, upload_type: "remote"}
+= render partial: "form", locals: {image: @image, upload_type: "remote", error_upload_type: @error_upload_type}
 %br
 %hr
 = render @images

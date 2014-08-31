@@ -13,6 +13,7 @@ class ImagesController < ApplicationController
       redirect_to images_path, notice: success_notice
     else
       @images = Image.all
+      @error_upload_type = params["upload type"]
       render 'index'
     end
   end
