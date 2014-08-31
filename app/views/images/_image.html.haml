@@ -1,6 +1,6 @@
 .image-thumbnail-container
   .image-name
-    %h3
-      = image.name
+    / %h3
+    /   = image.name
   .image-thumbnail
-    = link_to image_tag(image.content.url(:thumb)), image_path(image)
+    = link_to image_tag(image.content.url(:thumb), class: "image-thumbnail", alt: image.name), image_path(image)

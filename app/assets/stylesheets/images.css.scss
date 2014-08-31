@@ -6,9 +6,15 @@
   display: inline-block;
   margin: 0 10px;
   text-align: center;
+  img {
+    border-radius: 20%;
+  }
 }
 
 #image-full-container {
   margin: 0 auto;
   text-align: center;
+  img {
+    border-radius: 15%;
+  }
 }

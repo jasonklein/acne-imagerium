@@ -1,5 +1,5 @@
 = form_for image do |f|
-  = f.label :name
+  = f.label :name, "Image Name"
   = f.text_field :name, value: upload_form_name_value(image, error_upload_type, upload_type)
   = f.label "Image"
   = upload_field f, upload_type
