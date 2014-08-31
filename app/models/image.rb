@@ -7,7 +7,7 @@ class Image < ActiveRecord::Base
   validate :local_or_remote_content
 
   def local_or_remote_content
-    if !remote_content_url && !content
+    if remote_content_url.blank? && content.blank?
       errors.add(:base, "must include an image or image url")
     end
   end
