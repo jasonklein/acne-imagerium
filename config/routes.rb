@@ -2,6 +2,8 @@ AcneImagerium::Application.routes.draw do
   
   resources :images
 
+  get "/", to: "images#index"
+
   root to: "images#index"
 
   # The priority is based upon order of creation:

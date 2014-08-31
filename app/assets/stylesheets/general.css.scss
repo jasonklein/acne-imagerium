@@ -1,3 +1,7 @@
 body {
   @include outer-container;
 }
+
+a {
+  text-decoration: none;
+}

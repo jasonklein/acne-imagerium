@@ -1,2 +1,6 @@
-%h2 Images#show
-%p Find me in app/views/images/show.html.haml
+%h2
+  = @image.name
+%h3
+  = link_to "Back", :back
+#image-full-container
+  = image_tag @image.content.url
