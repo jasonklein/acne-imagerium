@@ -1,7 +1,4 @@
 = form_for image do |f|
-  - if image.errors.any?
-    .errors
-      = image.errors.full_messages.join(', ').downcase.capitalize
   = f.label :name
   = f.text_field :name
   = f.label "Image"
