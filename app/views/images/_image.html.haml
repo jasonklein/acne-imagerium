@@ -1,0 +1,6 @@
+.image-container
+  .image-name
+    %h3
+      = image.name
+  .image-thumbnail
+    = link_to image_tag(image.content.url(:thumb)), image_path(image)
