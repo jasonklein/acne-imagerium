@@ -1,1 +1,1 @@
-= image_tag(image.content.url(:thumb), class: "image-thumbnail", alt: image.name)
+= image_tag(image.content.url(:thumb), class: "image-thumbnail", alt: image.name, data: {id: "image-#{image.id}"})
