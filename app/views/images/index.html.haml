@@ -5,4 +5,5 @@
 = render partial: "form", locals: {image: @image, upload_type: "remote", error_upload_type: @error_upload_type}
 %br
 %hr
-= render @images
+#thumbnails-container
+  = render @images
