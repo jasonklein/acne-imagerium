@@ -2,14 +2,27 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#thumbnails-container {
-  position: absolute;
-  left: 0;
-  right: 0;
-  max-height: 120px;
-  bottom: 0;
-  overflow-x: hidden;
-  .image-thumbnail {
-    float: left;
+#container {
+  position: relative;
+  #thumbnails-container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    max-height: 120px;
+    bottom: 0;
+    overflow-x: hidden;
+    .image-thumbnail {
+      float: left;
+    }
+  }
+  #images-container {
+    height: 600px;
+    text-align: center;
+    img {
+      height: 100%;
+    }
+    .hidden-image {
+      display: none;
+    }
   }
 }

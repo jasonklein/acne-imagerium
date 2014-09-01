@@ -5,6 +5,10 @@
 = render partial: "form", locals: {image: @image, upload_type: "remote", error_upload_type: @error_upload_type}
 %br
 %hr
-#image-container
-#thumbnails-container
-  = render @images
+#container
+  #images-container
+    - @images.each do |image|
+      = image_tag image.content.url, alt: image.name, class: "full-image hidden-image", id: "image-#{image.id}"
+  #thumbnails-container
+    - @images.each do |image|
+      = render partial: "image", locals: {image: image}
