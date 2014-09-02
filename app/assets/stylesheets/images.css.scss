@@ -2,27 +2,59 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.direction-arrow {
+  width: 60px;
+  height: 60px;
+  font-size: 50px;
+  padding: 0 20px;
+  background-color: #000;
+  color: #FFF;
+  z-index: 10;
+  margin: 0 auto;
+  text-align: center;
+}
+
 #container {
   position: relative;
   #thumbnails-container {
     position: absolute;
     left: 0;
     right: 0;
-    max-height: 120px;
+    height: 120px;
     bottom: 0;
     overflow-x: hidden;
     .image-thumbnail {
       float: left;
     }
+    display: none;
   }
   #images-container {
-    height: 600px;
-    text-align: center;
-    img {
-      height: 100%;
+    .visible-image {
+      @include row(table);
+      .direction-wrapper {
+        @include span-columns(3);
+        vertical-align: middle;
+        text-align: center;
+        .direction-arrow-prev {
+          @extend .direction-arrow;
+          text-align: right;
+        }
+        .direction-arrow-next {
+          @extend .direction-arrow;
+          text-align: left;
+        }
+      }
+      .image-wrapper {
+        @include span-columns(6);
+        text-align: center;
+        img {
+          width: 100%;
+        }
+      }
     }
     .hidden-image {
       display: none;
     }
   }
 }
+

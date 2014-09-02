@@ -8,7 +8,13 @@
 #container
   #images-container
     - @images.each do |image|
-      = image_tag image.content.url, alt: image.name, class: "full-image hidden-image", id: "image-#{image.id}"
+      .image-view-wrapper.hidden-image
+        .direction-wrapper
+          = prev_image_button(image)
+        .image-wrapper
+          = image_tag image.content.url, alt: image.name, class: "full-image", id: "image-#{image.id}"
+        .direction-wrapper
+          = next_image_button(image)
   #thumbnails-container
     - @images.each do |image|
-      = render partial: "image", locals: {image: image}
+      = render partial: "thumbnail", locals: {image: image}

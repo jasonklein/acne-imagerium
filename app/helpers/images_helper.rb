@@ -21,4 +21,14 @@ module ImagesHelper
     end
   end
 
+  def prev_image_button(id)
+    image = Image.where("id < ?", id).last
+    image ? render(partial: "arrow", locals: {image: image, direction: "prev"}) : return
+  end
+
+  def next_image_button(id)
+    image = Image.where("id > ?", id).first
+    image ? render(partial: "arrow", locals: {image: image, direction: "next"}) : return
+  end
+
 end

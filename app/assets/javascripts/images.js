@@ -3,7 +3,9 @@ var ImageriumApp = ImageriumApp || {};
 ImageriumApp.selectRandomImageToDisplay = function(thumbnails) {
   var thumbnail = thumbnails[Math.floor(Math.random() * thumbnails.length)];
   var id = $(thumbnail).data("id");
-  $("#" + id).removeClass("hidden-image").addClass("visible-image");
+  var imageWrapper = $("#" + id).parent()
+  var imageViewWrapper = imageWrapper.parent();
+  imageViewWrapper.removeClass("hidden-image").addClass("visible-image");
 }
 
 ImageriumApp.add_thumbnail_click_handlers = function(thumbnails) {
