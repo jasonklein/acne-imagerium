@@ -2,19 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.direction-arrow {
-  width: 60px;
-  height: 60px;
-  font-size: 50px;
-  padding: 0 20px;
-  background-color: #000;
-  color: #FFF;
-  z-index: 10;
-  margin: 0 auto;
-  text-align: center;
-}
-
-#id_of_element {
+#add-image-form {
+  @include outer-container;
 }
 
 #container {
@@ -44,6 +33,17 @@
     }
   }
   #images-container {
+    .direction-arrow {
+      width: 60px;
+      height: 60px;
+      font-size: 50px;
+      padding: 0 20px;
+      background-color: #000;
+      color: #FFF;
+      z-index: 10;
+      margin: 0 auto;
+      text-align: center;
+    }
     .visible-image {
       @include row(table);
       .direction-wrapper {
