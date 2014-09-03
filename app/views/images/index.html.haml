@@ -15,6 +15,7 @@
           = image_tag image.content.url, alt: image.name, class: "full-image", id: "image-#{image.id}"
         .direction-wrapper
           = next_image_button(image)
+  .push
   #thumbnails-container
     - @images.each do |image|
       = render partial: "thumbnail", locals: {image: image}
