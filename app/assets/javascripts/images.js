@@ -111,8 +111,19 @@ ImageriumApp.addSwipeToThumbnails = function(thumbnails) {
   }
 }
 
+ImageriumApp.setThumbnailsContainerWidth = function(thumbnails) {
+  $("#thumbnails-container").css("width", function() {
+    if(window.innerWidth > 640) {
+      return thumbnails.length * 120 + "px";
+    } else {
+      return thumbnails.length * 80 + "px";
+    }
+  });
+};
+
 ImageriumApp.setup = function() {
   var $thumbnails = $(".image-thumbnail");
+  ImageriumApp.setThumbnailsContainerWidth($thumbnails);
   ImageriumApp.addThumbnailClickHandlers($thumbnails);
   ImageriumApp.selectRandomImageToDisplay($thumbnails);
   ImageriumApp.addArrowClickHandler(".direction-arrow-prev");
