@@ -26,7 +26,6 @@
     .image-thumbnail {
       float: left;
     }
-    display: none;
   }
   #images-container {
     .visible-image {
@@ -56,5 +55,15 @@
       display: none;
     }
   }
+}
+
+/*Thumbnail Opacity*/
+
+.unselected-image-opacity {
+  opacity: 1;
+}
+
+.selected-image-opacity {
+  opacity: 0.7;
 }
 
