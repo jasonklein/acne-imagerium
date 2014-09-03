@@ -48,7 +48,11 @@ ImageriumApp.changeImage = function(imageId) {
 };
 
 ImageriumApp.addSwipeToThumbnails = function(thumbnails) {
-  var thumbnailWidth = 500;
+  if(window.innerWidth > 640) {
+    var thumbnailWidth = 120 * 5;
+  } else {
+    var thumbnailWidth = 80 * 3;
+  }
   var currentThumbnail = 0;
   var maxImages = thumbnails.length;
   var speed = 500;
@@ -57,7 +61,7 @@ ImageriumApp.addSwipeToThumbnails = function(thumbnails) {
     triggerOnTouchEnd: true,
     swipeStatus: swipeStatus,
     allowPageScroll: "vertical",
-    threshold: 75
+    threshold: 50
   };
 
   $(function () {
