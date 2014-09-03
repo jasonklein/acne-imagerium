@@ -5,6 +5,9 @@
 #add-image-form {
   @include outer-container;
   margin-bottom: 20px;
+  @include media($large-mobile-landscape-down) {
+    margin-left: 40px;
+  }
   @include media($large-screen-down) {
     display: none;
   }
@@ -15,6 +18,10 @@
 
 #container {
   position: relative;
+  @include media($large-screen-down) {
+    position: fixed;
+    bottom: 0;
+  }
   #thumbnails-container {
     position: absolute;
     left: 0;
@@ -22,6 +29,13 @@
     height: 120px;
     bottom: 0;
     overflow-x: hidden;
+    @include media($medium-screen-down) {
+      height: 80px;
+      img {
+        height: 100%;
+        width: auto;
+      }
+    }
     .image-thumbnail {
       float: left;
       -webkit-transition: all 300ms ease-in-out;
@@ -37,6 +51,12 @@
     }
     .selected-image-opacity {
       opacity: 0.7;
+    }
+  }
+  .push {
+    height: 120px;
+    @include media($medium-screen-down) {
+      height: 80px;
     }
   }
   #images-container {
@@ -55,9 +75,11 @@
       .direction-wrapper {
         @include span-columns(2);
         vertical-align: middle;
+        @include media($medium-screen-down) {
+          display: none;
+        }
         .direction-arrow-prev {
           @extend .direction-arrow;
-          
         }
         .direction-arrow-next {
           @extend .direction-arrow;
@@ -65,10 +87,17 @@
       }
       .image-wrapper {
         @include span-columns(8);
+        @include media($medium-screen-down) {
+          @include span-columns(8);
+        }
         text-align: center;
         img {
           height: 600px;
           max-width: 100%;
+          @include media($large-screen-down) {
+            width: 100%;
+            height: auto;
+          }
         }
       }
     }
