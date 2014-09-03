@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#add-image-form {
+#add-image-forms {
   @include outer-container;
   margin-bottom: 20px;
   @include media($large-mobile-landscape-down) {
@@ -13,6 +13,16 @@
   }
   #local-image-form, #remote-image-form {
     @include span-columns(5);
+    position: relative;
+    .form-title {
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
+  #local-image-form {
+    .form-pixel-push {
+      height: 7px;
+    }
   }
 }
 

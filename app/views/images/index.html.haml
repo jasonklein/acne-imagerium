@@ -1,12 +1,12 @@
-#add-image-form
+#add-image-forms
   #headline
     %h1 ACNE Imagerium
     = form_errors_if_any(@image)
   #local-image-form
-    %h4 Add an Image from your Computer
+    .form-title Add an Image from your Computer
     = render partial: "form", locals: {image: @image, upload_type: "local", error_upload_type: @error_upload_type}
   #remote-image-form
-    %h4 Add an Image from the Internets
+    .form-title Add an Image from the Internets
     = render partial: "form", locals: {image: @image, upload_type: "remote", error_upload_type: @error_upload_type}
 #container
   #images-container
