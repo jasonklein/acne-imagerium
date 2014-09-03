@@ -1,10 +1,13 @@
-= form_errors_if_any(@image)
-%h2 Add an Image from your Computer
-= render partial: "form", locals: {image: @image, upload_type: "local", error_upload_type: @error_upload_type}
-%h2 Add an Image from the Internets
-= render partial: "form", locals: {image: @image, upload_type: "remote", error_upload_type: @error_upload_type}
-%br
-%hr
+#add-image-form
+  #headline
+    %h1 ACNE Imagerium
+    = form_errors_if_any(@image)
+  #local-image-form
+    %h4 Add an Image from your Computer
+    = render partial: "form", locals: {image: @image, upload_type: "local", error_upload_type: @error_upload_type}
+  #remote-image-form
+    %h4 Add an Image from the Internets
+    = render partial: "form", locals: {image: @image, upload_type: "remote", error_upload_type: @error_upload_type}
 #container
   #images-container
     - @images.each do |image|

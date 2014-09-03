@@ -4,6 +4,13 @@
 
 #add-image-form {
   @include outer-container;
+  margin-bottom: 20px;
+  @include media($large-screen-down) {
+    display: none;
+  }
+  #local-image-form, #remote-image-form {
+    @include span-columns(5);
+  }
 }
 
 #container {
@@ -37,26 +44,23 @@
       width: 60px;
       height: 60px;
       font-size: 50px;
-      padding: 0 20px;
+      padding: 10px 20px 0 15px;
       background-color: #000;
       color: #FFF;
       z-index: 10;
       margin: 0 auto;
-      text-align: center;
     }
     .visible-image {
       @include row(table);
       .direction-wrapper {
         @include span-columns(2);
         vertical-align: middle;
-        text-align: center;
         .direction-arrow-prev {
           @extend .direction-arrow;
-          text-align: right;
+          
         }
         .direction-arrow-next {
           @extend .direction-arrow;
-          text-align: left;
         }
       }
       .image-wrapper {
