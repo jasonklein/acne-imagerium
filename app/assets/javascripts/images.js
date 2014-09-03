@@ -40,12 +40,84 @@ ImageriumApp.changeImage = function(imageId) {
   ImageriumApp.revealImage(imageId);
 };
 
+ImageriumApp.addSwipeToThumbnails = function(thumbnails) {
+  var thumbnailWidth = 500;
+  var currentThumbnail = 0;
+  var maxImages = thumbnails.length;
+  var speed = 500;
+
+  // var thumbnailsContainer;
+
+  var swipeOptions = {
+      triggerOnTouchEnd: true,
+      swipeStatus: swipeStatus,
+      allowPageScroll: "vertical",
+      threshold: 75
+  };
+
+  $(function () {
+      thumbnailsContainer = $("#thumbnails-container");
+      thumbnailsContainer.swipe(swipeOptions);
+  });
+
+
+  /**
+   * Catch each phase of the swipe.
+   * move : we drag the div
+   * cancel : we animate back to where we were
+   * end : we animate to the next image
+   */
+  function swipeStatus(event, phase, direction, distance) {
+      //If we are moving before swipe, and we are going L or R in X mode, or U or D in Y mode then drag.
+      if (phase == "move" && (direction == "left" || direction == "right")) {
+          var duration = 0;
+
+          if (direction == "left") {
+              scrollImages((thumbnailWidth * currentThumbnail) + distance, duration);
+          } else if (direction == "right") {
+              scrollImages((thumbnailWidth * currentThumbnail) - distance, duration);
+          }
+
+      } else if (phase == "cancel") {
+          scrollImages(thumbnailWidth * currentThumbnail, speed);
+      } else if (phase == "end") {
+          if (direction == "right") {
+              previousImage();
+          } else if (direction == "left") {
+              nextImage();
+          }
+      }
+  }
+
+  function previousImage() {
+      currentThumbnail = Math.max(currentThumbnail - 1, 0);
+      scrollImages(thumbnailWidth * currentThumbnail, speed);
+  }
+
+  function nextImage() {
+      currentThumbnail = Math.min(currentThumbnail + 1, maxImages - 1);
+      scrollImages(thumbnailWidth * currentThumbnail, speed);
+  }
+
+  /**
+   * Manually update the position of the imgs on drag
+   */
+  function scrollImages(distance, duration) {
+      thumbnailsContainer.css("transition-duration", (duration / 1000).toFixed(1) + "s");
+
+      //inverse the number we set in the css
+      var value = (distance < 0 ? "" : "-") + Math.abs(distance).toString();
+      thumbnailsContainer.css("transform", "translate(" + value + "px,0)");
+  }
+}
+
 ImageriumApp.setup = function() {
   var $thumbnails = $(".image-thumbnail");
   ImageriumApp.addThumbnailClickHandlers($thumbnails);
   ImageriumApp.selectRandomImageToDisplay($thumbnails);
   ImageriumApp.addArrowClickHandler(".direction-arrow-prev");
   ImageriumApp.addArrowClickHandler(".direction-arrow-next");
+  ImageriumApp.addSwipeToThumbnails($thumbnails);
 };
 
 $(ImageriumApp.setup);
