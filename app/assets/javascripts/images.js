@@ -33,6 +33,7 @@ ImageriumApp.hideImage = function() {
 
 ImageriumApp.changeImage = function(imageId) {
   ImageriumApp.hideImage();
+  ImageriumApp.revealImage(imageId);
 };
 
 ImageriumApp.setup = function() {
