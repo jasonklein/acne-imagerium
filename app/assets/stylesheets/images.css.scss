@@ -23,12 +23,17 @@
     bottom: 0;
   }
   #thumbnails-container {
-    position: absolute;
     left: 0;
     right: 0;
     height: 120px;
     bottom: 0;
-    overflow-x: hidden;
+    float: left;
+    display: inline;
+    overflow: hidden;
+    transition-property: transform;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-out;
+    transform: translate(0, 0);
     @include media($medium-screen-down) {
       height: 80px;
       img {
@@ -38,6 +43,8 @@
     }
     .image-thumbnail {
       float: left;
+      padding: 0;
+      margin: 0;
       -webkit-transition: all 300ms ease-in-out;
       -moz-transition: all 300ms ease-in-out;
       -o-transition: all 300ms ease-in-out;
@@ -51,12 +58,6 @@
     }
     .selected-image-opacity {
       opacity: 0.7;
-    }
-  }
-  .push {
-    height: 120px;
-    @include media($medium-screen-down) {
-      height: 80px;
     }
   }
   #images-container {
@@ -106,7 +107,3 @@
     }
   }
 }
-
-/*Thumbnail Opacity*/
-
-
