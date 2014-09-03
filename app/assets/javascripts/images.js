@@ -8,16 +8,17 @@ ImageriumApp.selectRandomImageToDisplay = function(thumbnails) {
 
 ImageriumApp.addThumbnailClickHandlers = function(thumbnails) {
   $.each(thumbnails, function(i, thumbnail){
-    var id = $(this).data("id");
+    var imageId = $(this).data("id");
+    $(this).click(function() {
+      ImageriumApp.changeImage(imageId);
+    });
   });
 };
 
 ImageriumApp.addArrowClickHandler = function(arrowClass) {
   $(arrowClass).click(function() {
     var imageId = $(this).data("id");
-    console.log(imageId);
     ImageriumApp.changeImage(imageId);
-
   });
 };
 
