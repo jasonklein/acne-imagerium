@@ -15,7 +15,7 @@ gem 'figaro'
 gem 'normalize-rails'
 gem 'bourbon'
 gem 'neat'
-
+gem 'bitters'
 gem 'haml-rails'
 
 
