@@ -96,7 +96,7 @@
       .direction-wrapper {
         @include span-columns(2);
         vertical-align: middle;
-        @include media($medium-screen-down) {
+        @include media($large-screen-down) {
           display: none;
         }
         .direction-arrow-prev {
@@ -108,7 +108,7 @@
       }
       .image-wrapper {
         @include span-columns(8);
-        @include media($medium-screen-down) {
+        @include media($large-screen-down) {
           @include span-columns(8);
         }
         text-align: center;

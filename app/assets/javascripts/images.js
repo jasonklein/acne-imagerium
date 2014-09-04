@@ -32,7 +32,7 @@ ImageriumApp.revealImage = function(imageId) {
 };
 
 ImageriumApp.setImageViewWrapperWidth = function(imageViewWrapper) {
-  if(window.innerWidth <= 640) {
+  if(window.innerWidth <= 860) {
     imageViewWrapper.css("width", window.innerWidth + "px");
   };
 };
@@ -118,7 +118,7 @@ ImageriumApp.setThumbnailsContainerWidth = function(thumbnails) {
 };
 
 ImageriumApp.makeAllImagesVisibleIfMobile = function() {
-  if(window.innerWidth <= 640) {
+  if(window.innerWidth <= 860) {
     ImageriumApp.setImagesContainerWidth();
     $(".hidden-image").removeClass("hidden-image").addClass("visible-image");
     ImageriumApp.addSwipeToImages();
@@ -129,6 +129,7 @@ ImageriumApp.setImagesContainerWidth = function() {
   var imagesCount = $(".image-view-wrapper").length;
   $("#images-container").css("width", window.innerWidth * imagesCount);
   $(".image-view-wrapper").css("width", window.innerWidth + "px");
+  $(".image-wrapper").css("width", window.innerWidth + "px");
   $(".full-image").css("width", window.innerWidth + "px");
 };
 
