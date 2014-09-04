@@ -2,6 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.swipe-styling-attributes {
+  float: left;
+  display: inline;
+  transition-property: transform;
+  transition-duration: 0.5s;
+  transition-timing-function: ease-out;
+  transform: translate(0, 0);
+}
+
 #add-image-forms {
   @include outer-container;
   margin-bottom: 20px;
@@ -37,13 +46,7 @@
     right: 0;
     height: 120px;
     bottom: 0;
-    float: left;
-    display: inline;
-    overflow: hidden;
-    transition-property: transform;
-    transition-duration: 0.5s;
-    transition-timing-function: ease-out;
-    transform: translate(0, 0);
+    @extend .swipe-styling-attributes;
     @include media($medium-screen-down) {
       height: 80px;
       img {
@@ -62,6 +65,9 @@
       &:hover {
         opacity: 0.7;
       }
+      img {
+        transform: translate(0, 0);
+      }
     }
     .unselected-image-opacity {
       opacity: 1;
@@ -71,6 +77,7 @@
     }
   }
   #images-container {
+    @extend .swipe-styling-attributes;
     .direction-arrow {
       width: 60px;
       height: 60px;
@@ -82,7 +89,10 @@
       margin: 0 auto;
     }
     .visible-image {
-      @include row(table);
+      display: inline;
+      @include media($medium-screen-up) {
+        @include row(table);
+      }
       .direction-wrapper {
         @include span-columns(2);
         vertical-align: middle;
@@ -103,8 +113,11 @@
         }
         text-align: center;
         img {
+          margin: 0;
+          padding: 0;
           height: 600px;
           max-width: 100%;
+          transform: translate(0, 0);
           @include media($large-screen-down) {
             width: 100%;
             height: auto;

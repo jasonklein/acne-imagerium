@@ -117,6 +117,77 @@ ImageriumApp.setThumbnailsContainerWidth = function(thumbnails) {
   });
 };
 
+ImageriumApp.makeAllImagesVisibleIfMobile = function() {
+  if(window.innerWidth <= 640) {
+    ImageriumApp.setImagesContainerWidth();
+    $(".hidden-image").removeClass("hidden-image").addClass("visible-image");
+    ImageriumApp.addSwipeToImages();
+  };
+};
+
+ImageriumApp.setImagesContainerWidth = function() {
+  var imagesCount = $(".image-view-wrapper").length;
+  $("#images-container").css("width", window.innerWidth * imagesCount);
+  $(".image-view-wrapper").css("width", window.innerWidth + "px");
+  $(".full-image").css("width", window.innerWidth + "px");
+};
+
+ImageriumApp.addSwipeToImages = function() {
+  var imageWidth = window.innerWidth
+  var currentImage = 0;
+  var maxImages = $(".image-view-wrapper").length;
+  var speed = 500;
+
+  var swipeOptions = {
+    triggerOnTouchEnd: true,
+    swipeStatus: swipeStatus,
+    allowPageScroll: "vertical",
+    threshold: 50
+  };
+
+  $(function () {
+    imagesContainer = $("#images-container");
+    imagesContainer.swipe(swipeOptions);
+  });
+
+  function swipeStatus(event, phase, direction, distance) {
+    if (phase == "move" && (direction == "left" || direction == "right")) {
+      var duration = 0;
+
+      if (direction == "left") {
+          scrollImages((imageWidth * currentImage) + distance, duration);
+      } else if (direction == "right") {
+          scrollImages((imageWidth * currentImage) - distance, duration);
+      }
+    } else if (phase == "cancel") {
+      scrollImages(imageWidth * currentImage, speed);
+    } else if (phase == "end") {
+      if (direction == "right") {
+          previousImage();
+      } else if (direction == "left") {
+          nextImage();
+      }
+    }
+  }
+
+  function previousImage() {
+    currentImage = Math.max(currentImage - 1, 0);
+    scrollImages(imageWidth * currentImage, speed);
+  }
+
+  function nextImage() {
+    currentImage = Math.min(currentImage + 1, maxImages - 1);
+    scrollImages(imageWidth * currentImage, speed);
+  }
+
+  function scrollImages(distance, duration) {
+    imagesContainer.css("transition-duration", (duration / 1000).toFixed(1) + "s");
+
+    var value = (distance < 0 ? "" : "-") + Math.abs(distance).toString();
+    imagesContainer.css("transform", "translate(" + value + "px,0)");
+  }
+}
+
 ImageriumApp.setup = function() {
   var $thumbnails = $(".image-thumbnail");
   ImageriumApp.setThumbnailsContainerWidth($thumbnails);
@@ -125,6 +196,8 @@ ImageriumApp.setup = function() {
   ImageriumApp.addArrowClickHandler(".direction-arrow-prev");
   ImageriumApp.addArrowClickHandler(".direction-arrow-next");
   ImageriumApp.addSwipeToThumbnails($thumbnails);
+  ImageriumApp.makeAllImagesVisibleIfMobile();
+  $(window).resize(ImageriumApp.makeAllImagesVisibleIfMobile);
 };
 
 $(ImageriumApp.setup);
